@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ephemeral Cycles</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="view-more-btn">˖˚⊹Home⊹˚˖</a></li>
+            <li><a href="research.html" class="view-more-btn">˖˚⊹Research⊹˚˖</a></li>
+            <li><a href="process.html" class="view-more-btn">˖˚⊹Process⊹˚˖</a></li>
+            <li><a href="final-work.html" class="view-more-btn">˖˚⊹Final Work⊹˚˖</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1>Ephemeral Cycles</h1>
+
+        <div class="artist-statement">
+            <p>Ephemeral Cycles is an interactive installation that merges physical, cosmological, and philosophical perspectives on time through the lens of memento mori. Featuring a static Möbius strip with barrier-grid animation printed on positive film, it displays cosmic events symbolizing endless cycles. Viewers engage by winding a spring mechanism (發條) to activate swinging metal lights via magnetic pendulums, casting shadows that evoke the sun and moon. This piece invites reflection on time's transience, encouraging presence in the moment without reliance on electricity, embodying the vanity of Ecclesiastes and the subjective nature of existence.</p>
+        </div>
+
+        <!-- Carousel for automatic playing photos -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item">Placeholder for Work Image 1</div>
+                <div class="carousel-item">Placeholder for Work Image 2</div>
+                <div class="carousel-item">Placeholder for Work Image 3</div>
+                <!-- Add more placeholders as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" title="Back to Top">^</button>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="hourglass"></div>
+        <p>It is almost done! Please wait~</p>
+    </div>
+
+    <script>
+        // Back to top
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            btt.classList.toggle('show', window.scrollY > 500);
+        });
+        btt.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+        // Loader
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Simple carousel autoplay
+        const carouselInner = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+        let current = 0;
+        const intervalTime = 3000; // 3 seconds
+        let slideInterval;
+
+        const nextSlide = () => {
+            current = (current + 1) % items.length;
+            carouselInner.style.transform = `translateX(-${current * 100}%)`;
+        };
+
+        const startSlide = () => {
+            slideInterval = setInterval(nextSlide, intervalTime);
+        };
+
+        startSlide();
+    </script>
+</body>
+</html>
