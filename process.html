@@ -8,71 +8,117 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Timeline Bar Styles */
-        .timeline-container {
+        /* Global Reset to Prevent Overflow */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Dropdown Navigation Styles */
+        .dropdown-container {
             position: sticky;
             top: 0;
             background: rgba(92, 165, 165, 0.95);
-            padding: 12px 20px;
+            padding: 15px 25px;
             margin: 20px auto;
-            max-width: 1000px;
+            width: 90%;
+            max-width: 450px;
             z-index: 100;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-        }
-
-        .timeline {
-            position: relative;
-            height: 22px;
-            background: antiquewhite;
-            border-radius: 11px;
-        }
-
-        .timeline-slider {
-            width: 100%;
-            height: 22px;
-            cursor: pointer;
-        }
-
-        .timeline-points {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            gap: 15px;
+            backdrop-filter: blur(5px);
         }
 
-        .timeline-point {
-            width: 12px;
-            height: 12px;
-            background: khaki;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .timeline-label {
-            position: absolute;
-            top: 28px;
-            /* Moved lower to avoid slider knob */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.82em;
+        .dropdown-label {
             color: antiquewhite;
-            white-space: nowrap;
+            font-weight: bold;
+            font-size: 1.1rem;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .timeline-progress {
-            height: 100%;
-            background: #e6b800;
-            /* Warm gold for strong contrast */
-            border-radius: 11px;
-            transition: width 0.3s ease;
+        #timeline-dropdown {
+            padding: 8px 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 2px solid antiquewhite;
+            background-color: rgba(250, 235, 215, 0.15);
+            color: khaki;
+            cursor: pointer;
+            outline: none;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
+
+        #timeline-dropdown:hover, #timeline-dropdown:focus {
+            border-color: khaki;
+            background-color: rgba(250, 235, 215, 0.25);
+        }
+
+        #timeline-dropdown option {
+            background-color: rgb(92, 165, 165);
+            color: antiquewhite;
+            font-weight: bold;
+        }
+
+        /* Image Gallery Styling */
+        .process-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .process-gallery img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border: 3px solid antiquewhite;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .process-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Table Styling */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: khaki;
+            border: 1px solid antiquewhite;
+            min-width: 300px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid rgba(250, 235, 215, 0.3);
+            text-align: left;
+        }
+
+        th { background: rgba(250, 235, 215, 0.1); color: antiquewhite; }
+
+        .bold-text { font-weight: bold; color: antiquewhite; }
+        .quote-block { font-style: italic; border-left: 3px solid khaki; padding-left: 15px; margin: 15px 0; }
     </style>
 </head>
 
@@ -90,289 +136,246 @@
     <section id="process">
         <h2>GT Process Documentation: Ephemeral Cycles</h2>
 
-        <!-- Timeline Bar -->
-        <div class="timeline-container">
-            <div class="timeline">
-                <div class="timeline-progress" id="timeline-progress"></div>
-                <div class="timeline-points" id="timeline-points"></div>
-            </div>
-            <input type="range" class="timeline-slider" id="timeline-slider" min="0" max="0" value="0" step="1">
+        <div class="dropdown-container">
+            <label for="timeline-dropdown" class="dropdown-label">Jump to Date:</label>
+            <select id="timeline-dropdown">
+                </select>
         </div>
 
         <div class="process-list">
 
-            <!-- Initial Brainstorming -->
             <div class="process-entry" id="entry-0">
-                <div class="process-title">08/2025 – Initial Brainstorming</div>
+                <div class="process-title">Mid-August 2025 – Initial Brainstorming</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Explored memento mori as core concept.</div>
-                            <div>First idea: clock with barrier-grid animation.</div>
-                            <div>Goal: gentle reminder of life’s transience via nature visuals.</div>
+                            <div>Started exploring memento mori as the core concept.</div>
+                            <div>First idea: a clock with barrier-grid animation.</div>
+                            <div>Goal: gentle reminder of life’s transience using nature visuals.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- First Advisor Meeting -->
             <div class="process-entry" id="entry-1">
-                <div class="process-title">09/2025 – First Advisor Meeting</div>
+                <div class="process-title">Mid-September 2025 – First Advisor Meeting</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
                             <div>Discussed initial idea.</div>
-                            <div>Advisor suggested more research on “what is time?”</div>
-                            <div>Key questions: What defines time? How to interpret it differently?</div>
+                            <div>Advisor suggested: do more research on “what is time?”</div>
+                            <div>Key questions: What defines time? How can we interpret it in different ways?</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Research Phase -->
             <div class="process-entry" id="entry-2">
-                <div class="process-title">09/2025 – Research Phase</div>
+                <div class="process-title">End of September 2025 – Research Phase</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div><strong>Memento Mori:</strong> Latin for “remember you must die”. Used in art for
-                                humility and mindfulness. Examples: vanitas paintings, skulls (avoiding dark themes).
+                            <div class="bold-text">1. Memento Mori</div>
+                            <div>Origin: Latin phrase “remember you must die”. Used in art to encourage humility and mindfulness.</div>
+                            <br>
+                            <div class="bold-text">2. Perspectives on Time</div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <tr><th>Perspective</th><th>Core Idea</th></tr>
+                                    <tr><td>Physical</td><td>Measurable, mechanical (clocks, seconds)</td></tr>
+                                    <tr><td>Cosmological</td><td>Vast, cyclical (sun, seasons, stars)</td></tr>
+                                    <tr><td>Philosophical</td><td>Subjective, experiential (memory, presence)</td></tr>
+                                </table>
                             </div>
-                            <div><strong>Time Perspectives (3 Categories):</strong></div>
-                            <div>Physical: Mechanical, like clocks and seconds.</div>
-                            <div>Cosmological: Cyclical, like sun and seasons.</div>
-                            <div>Philosophical: Subjective, like memory and presence.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Personal Reflection -->
             <div class="process-entry" id="entry-3">
-                <div class="process-title">10/2025 – Personal Reflection</div>
+                <div class="process-title">Early October 2025 – Personal Reflection</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Felt time accelerate after secondary school.</div>
-                            <div>Struggle to "keep up" with time despite hard work.</div>
-                            <div>Question: What does cherishing time mean?</div>
-                            <div>Conclusion: Ignore time; focus on the present moment.</div>
+                            <div>As a secondary school student, I felt time accelerate. By the time I noticed, those years were gone.</div>
+                            <div>Big question: What does it mean to truly cherish time?</div>
+                            <div class="quote-block">Temporal conclusion: Perhaps the way to cherish time is to ignore it entirely — focus only on the task, immerse in the experience, let time disappear.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project Expansion -->
             <div class="process-entry" id="entry-4">
-                <div class="process-title">10/2025 – Project Expansion</div>
+                <div class="process-title">Mid-October 2025 – Project Expansion</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Expanded beyond one clock.</div>
-                            <div>One artwork per time perspective.</div>
-                            <div>Physical: Barrier-grid clock.</div>
-                            <div>Cosmological: Sundial with shadows.</div>
-                            <div>Philosophical: Non-functional timepiece for presence.</div>
-                            <div>Outcome: Series of transformed time devices as gentle memento mori.</div>
+                            <div>Decided to expand beyond one clock into a series:</div>
+                            <div>1. Physical: Animated barrier-grid clock.</div>
+                            <div>2. Cosmological: Sundial with subtle motion.</div>
+                            <div>3. Philosophical: Non-functional “timepiece” that forces presence.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Work -->
             <div class="process-entry" id="entry-5">
-                <div class="process-title">10/2025 – Technical Work</div>
+                <div class="process-title">End of October 2025 – Technical Work</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Focus: Barrier-grid animation for clock.</div>
-                            <div>Challenge: Shorten videos, reduce stripe width for clarity, interlace for circle.</div>
-                            <div>Status: Testing code and prints.</div>
-                            <div>Decision: Use original content to avoid copyright.</div>
-                            <div><strong>Animation Plan:</strong></div>
-                            <div>Outer: Acorn to tree decay or blossom to rot.</div>
-                            <div>Middle: Strawberry to shrivel.</div>
-                            <div>Inner: Daylily or morning glory bloom.</div>
+                            <div class="bold-text">Animation Content Plan (Nature + Transience)</div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <tr><th>Ring</th><th>Frames</th><th>Theme</th></tr>
+                                    <tr><td>Outer (Hours)</td><td>24</td><td>Majestic decay (Oak acorn → tree)</td></tr>
+                                    <tr><td>Middle (Minutes)</td><td>6</td><td>Weekly/monthly (Strawberry → shrivel)</td></tr>
+                                    <tr><td>Inner (Seconds)</td><td>4</td><td>Daily (Daylily bloom)</td></tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Development & Animation Logic -->
             <div class="process-entry" id="entry-6">
-                <div class="process-title">11/2025 – Technical Development & Animation Logic</div>
+                <div class="process-title">Early November 2025 – Animation Logic</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Goal: Reduce stripe width for brightness.</div>
-                            <div>Extracted frames, created interlaced strips.</div>
-                            <div>Working on circular stitching in Processing.</div>
-                            <div><strong>Method:</strong></div>
-                            <div>1. Video (518 frames) split into 129 groups (4 frames each).</div>
-                            <div>2. Interlace each group (5px slit).</div>
-                            <div>3. Arrange in donut ring for 516 frames.</div>
-                            <div>4. Stripe width ~1.8mm on 30cm clock.</div>
-                            <div>Insight: Same sequence, vary speed for pace.</div>
-                            <div><strong>Strategy:</strong> 24-frame animation for all rings. Metaphor: One life on
-                                different scales.</div>
+                            <div>Method: Split 518 frames into 129 groups (4 frames each) to create 129 interlaced strips.</div>
+                            <div>Arranged side-by-side around a donut-shaped ring in Processing.</div>
+                            <div class="bold-text">Unified Animation Strategy:</div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <tr><th>Ring</th><th>Rotation Speed</th><th>Pace</th></tr>
+                                    <tr><td>Inner</td><td>1 turn / 60 sec</td><td>Fast</td></tr>
+                                    <tr><td>Middle</td><td>1 turn / 60 min</td><td>Moderate</td></tr>
+                                    <tr><td>Outer</td><td>1 turn / 12 hrs</td><td>Slow</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/Early November 2025_02.jpg" alt="Technical Development Logic">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Development -->
             <div class="process-entry" id="entry-7">
-                <div class="process-title">11/2025 – Technical Development</div>
+                <div class="process-title">Mid-November 2025 – Technical Development</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Achievement: Created three-ring overlay in Illustrator with aligned grids.</div>
-                            <div>Goal: Match interlaced images to overlay using Illustrator.</div>
+                            <div>Created a three-ring overlay using Adobe Illustrator with aligned grids.</div>
+                            <div>Goal: Generate matching interlaced donut images that perfectly align.</div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/Mid-November 2025 – Technical Development_01.jpg" alt="Adobe Illustrator Grid">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project Contraction -->
             <div class="process-entry" id="entry-8">
-                <div class="process-title">11/2025 – Project Contraction</div>
+                <div class="process-title">End of November 2025 – Project Contraction</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Abandoned series for one unified installation.</div>
-                            <div>Physical: Rotating cylinder with plant animation.</div>
-                            <div>Cosmological: Light for shifting shadows.</div>
-                            <div>Philosophical: Pulse sensor adjusts speed to heartbeat.</div>
-                            <div>Overall: 50x50x50 cm organic form.</div>
+                            <div>Abandoned the series for one unified interactive installation.</div>
+                            <div>Includes Physical (cylinder), Cosmological (light/shadow), and Philosophical (pulse sensor) aspects.</div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/End of November 2025_01.jpg" alt="Single Installation Proposal">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Buying Materials -->
             <div class="process-entry" id="entry-9">
-                <div class="process-title">12/2025 – Buying Materials</div>
+                <div class="process-title">Mid-December 2025 – Möbius Strip Version</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Purchased for installation: servo motor, pulse sensor, turntable.</div>
+                            <div>The plant grows on one half, dies on the other, then flips and starts again forever.</div>
+                            <div>Solution for rotation: Cut a slit and thread the second strip through to allow independent rotation.</div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/Mid-December 2025_01.jpg" alt="Möbius Strip Mechanism 1">
+                            <img src="images/Mid-December 2025_02.jpg" alt="Möbius Strip Mechanism 2">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Exploring Möbius Strip Version -->
             <div class="process-entry" id="entry-10">
-                <div class="process-title">12/2025 – Exploring Möbius Strip Version</div>
+                <div class="process-title">Early January 2026 – Lighting System</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Switched to Möbius strip for endless loop animation.</div>
-                            <div>Plant grows, dies, flips, repeats.</div>
-                            <div>Heartbeat controls speed; light casts twisting shadows.</div>
-                            <div>Tried lenticular for multi-angle motion.</div>
-                            <div>Used real-time video from cameras or webcams.</div>
-                            <div>Issue: Stacked strips can't rotate independently in Möbius form.</div>
-                            <div>Solution: Cut slit, thread strips to interlock for rotation.</div>
+                            <div>Using switchable permanent magnets controlled by small servo motors.</div>
+                            <div>Wireless LED lamps with ferromagnetic bases sway to changing magnetic fields.</div>
+                            <div>Creates dynamic shadows simulating independent orbits of celestial bodies.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Lighting System Decision -->
             <div class="process-entry" id="entry-11">
-                <div class="process-title">01/2026 – Lighting System Decision</div>
+                <div class="process-title">Mid-January 2026 – Animation Decisions</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Goal: Dynamic shadows that evoke cosmological time while staying electricity-free.
-                            </div>
-                            <div>1. Switchable permanent magnets (no power, no heat, no noise).</div>
-                            <div>2. Small servo motors slowly rotate magnet handles (strong → weak cycles).</div>
-                            <div>3. Hanging wireless LED lamps with ferromagnetic bases respond to magnets.</div>
-                            <div>4. Multiple lamps create evolving shadows like planets and moons.</div>
-                            <div>Result: Pure poetic shadows with minimal hidden automation.</div>
+                            <div>Chosen 8 frames for the Möbius strip animation.</div>
+                            <div>Content: MTR sunlight, children running, raindrops, sunsets.</div>
+                            <div>Heartbeat interaction: “My pulse controls the rhythm of the universe.”</div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/Mid-January 2026_01.jpg" alt="Animation Strip Test">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Barrier-Grid Animation Decisions -->
             <div class="process-entry" id="entry-12">
-                <div class="process-title">01/2026 – Barrier-Grid Animation Decisions</div>
+                <div class="process-title">End of January 2026 – Spring Mechanism</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Frames: 8 total.</div>
-                            <div>Content: Cosmic events (sunlight flash, children running, raindrops, sunsets).</div>
-                            <div>Möbius strip feels like twisting galaxy – endless and shared.</div>
-                            <div>Strip sizes: Inner 0.1 mm PVC (9×140 cm), outer acetate (10×140 cm).</div>
-                            <div><strong>Reasons for 8 frames:</strong></div>
-                            <div>Band width: exactly 175 mm per cycle.</div>
-                            <div>Slit width: 22 mm (easy to print and align).</div>
+                            <div>Adopted a spring-powered mechanism (發條) to achieve the physical aspect of time.</div>
+                            <div>Electricity-free; viewer winds the spring to re-supply mechanical energy.</div>
+                            <div>Symbolizes that time requires human effort to continue flowing.</div>
+                        </div>
+                        <div class="process-gallery">
+                            <img src="images/End of January 2026_01.jpg" alt="Spring Test 1">
+                            <img src="images/End of January 2026_02.jpg" alt="Spring Test 2">
+                            <img src="images/End of January 2026_03.jpg" alt="Spring Test 3">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Spring-Powered Mechanism -->
             <div class="process-entry" id="entry-13">
-                <div class="process-title">01/2026 – Spring-Powered Mechanism</div>
+                <div class="process-title">Mid February 2026 – Concept Refinement</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Goal: Completely electricity-free movement.</div>
-                            <div>Adopted music-box style spring (發條) to drive lamp swing.</div>
-                            <div>Magnetic pendulum slows naturally; viewer winds spring to restart.</div>
-                            <div>Symbol: Human effort keeps time flowing.</div>
+                            <div>Removed projector and camera to focus on unity.</div>
+                            <div>1. Moving lights = Cosmological</div>
+                            <div>2. People walking = Philosophical</div>
+                            <div>3. Spring mechanism = Physical</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Animation Print Testing -->
             <div class="process-entry" id="entry-14">
-                <div class="process-title">01/2026 – Animation Print Testing</div>
+                <div class="process-title">Early March 2026 – Construction Begins</div>
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Screen tests (iPad) showed 4-frame and 6-frame clear.</div>
-                            <div>Printed on real PVC: effect disappeared due to ink opacity, thickness, and light
-                                scattering.</div>
-                            <div>New tests planned:</div>
-                            <div>• 4 frames × 7 pixels per stripe (~0.55 mm physical)</div>
-                            <div>• 5 frames × 5 pixels per stripe (~0.42 mm physical)</div>
-                            <div>Goal: Visible barrier-grid effect in physical print.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Major Concept Refinement -->
-            <div class="process-entry" id="entry-15">
-                <div class="process-title">02/2026 – Major Concept Refinement</div>
-                <div class="process-body">
-                    <div class="process-text">
-                        <div class="process-points">
-                            <div>Removed projector and camera for simplicity and unity.</div>
-                            <div>Decided to remove the projector and camera from the final setup. The projector was
-                                initially planned to project Processing-generated visual effects showing the shadow to
-                                the position of the audience as captured by the camera.</div>
-                                <div>The change was made to simplify the work, make it more focused on the main content, and
-                                create a stronger sense of unity. The three aspects of perceiving time are now clearly
-                                expressed as:</div>
-                                <div>1. Moving small metal lights = Cosmological perspective</div>
-                                <div>2. People walking to view the barrier-grid animation = Philosophical perspective</div>
-                                <div>3. Music box spring mechanism driven movement and music = Physical perspective</div>
-                                <div>The film element will be presented in four different forms:</div>
-                                <div>1. Unrolled film as a linear timeline</div>
-                                <div>2. Ends-connected film as cyclical time</div>
-                                <div>3. Möbius strip shaped film as unified and eternal time</div>
-                                <div>4. Film in pieces (one photo per piece) to represent fragments of time</div>
-                                <div>These film pieces will be hung or placed next to fixed spotlights on the wall. Viewers
-                                can choose a piece and project it onto a surface, either as a normal photo or as a
-                                barrier-grid animation.
-                            </div>
+                            <div>Confirmed film content (36 frames). Cut into 9-frame loop and 27-frame Möbius strip.</div>
+                            <div>Built the magnetic momentum mechanism and drilled the wooden base.</div>
                         </div>
                     </div>
                 </div>
@@ -381,10 +384,8 @@
         </div>
     </section>
 
-    <!-- Back to Top -->
     <button id="back-to-top" title="Back to Top">^</button>
 
-    <!-- Drawing Lightbox -->
     <div id="drawing-lightbox">
         <span class="drawing-close">×</span>
         <span class="drawing-nav" id="drawing-prev"> ← </span>
@@ -392,81 +393,73 @@
         <img id="drawing-img">
     </div>
 
-    <!-- Loader -->
-    <div id="loader">
-        <div class="hourglass"></div>
-        <p>It is almost done! Please wait~</p>
-    </div>
-
     <script>
+        // Mapping MM/YYYY to the ID of the earliest entry for that month
+        const monthMapping = [
+            { label: "08/2025", entryId: "entry-0" },
+            { label: "09/2025", entryId: "entry-1" },
+            { label: "10/2025", entryId: "entry-3" },
+            { label: "11/2025", entryId: "entry-6" },
+            { label: "12/2025", entryId: "entry-9" },
+            { label: "01/2026", entryId: "entry-10" },
+            { label: "02/2026", entryId: "entry-13" },
+            { label: "03/2026", entryId: "entry-14" }
+        ];
+
         // Back to top
         const btt = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            btt.classList.toggle('show', window.scrollY > 500);
-        });
+        window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 500));
         btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Loader
+        // Initialize Dropdown Navigation
         window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-            initTimeline();
+            initDropdown();
         });
 
-        // Timeline JS - grouped by unique month label
-        function initTimeline() {
-            const entries = document.querySelectorAll('.process-entry');
-            const slider = document.getElementById('timeline-slider');
-            const progress = document.getElementById('timeline-progress');
-            const pointsContainer = document.getElementById('timeline-points');
+        function initDropdown() {
+            const dropdown = document.getElementById('timeline-dropdown');
 
-            // Group by month label (first part of title)
-            const monthMap = new Map();
-            entries.forEach((entry, index) => {
-                const month = entry.querySelector('.process-title').textContent.split(' – ')[0];
-                if (!monthMap.has(month)) {
-                    monthMap.set(month, index);
+            // Populate the select element with options
+            monthMapping.forEach((m, index) => {
+                const option = document.createElement('option');
+                option.value = index; 
+                option.textContent = m.label;
+                dropdown.appendChild(option);
+            });
+
+            // Handle dropdown change event
+            dropdown.addEventListener('change', (e) => {
+                const val = parseInt(e.target.value);
+                const targetId = monthMapping[val].entryId;
+                const entry = document.getElementById(targetId);
+                
+                if (entry) {
+                    const offset = 80; // Offset to account for the sticky dropdown bar
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = entry.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
-
-            // Create one point per unique month
-            Array.from(monthMap).forEach(([month, firstIndex], i) => {
-                const point = document.createElement('div');
-                point.classList.add('timeline-point');
-                point.style.left = `${(i / (monthMap.size - 1)) * 100}%`;
-                point.onclick = () => scrollToEntry(firstIndex);
-
-                const label = document.createElement('div');
-                label.classList.add('timeline-label');
-                label.textContent = month;
-                point.appendChild(label);
-
-                pointsContainer.appendChild(point);
-            });
-
-            slider.max = entries.length - 1;
-
-            slider.oninput = (e) => {
-                const value = parseInt(e.target.value);
-                progress.style.width = `${(value / slider.max) * 100}%`;
-                scrollToEntry(value);
-            };
         }
 
-        function scrollToEntry(index) {
-            const entry = document.getElementById(`entry-${index}`);
-            if (entry) entry.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // Drawing lightbox
+        // Lightbox Logic
         const lightbox = document.getElementById('drawing-lightbox');
-        const img = document.getElementById('drawing-img');
-        let currentIndex = 0;
-        const images = ['images/sketch1.png', 'images/sketch2.png', 'images/sketch3.png', 'images/sketch4.png', 'images/sketch5.png'];
+        const lightboxImg = document.getElementById('drawing-img');
+        let currentIdx = 0;
+        let galleryImages = [];
 
-        document.querySelectorAll('.process-gallery img').forEach((el, i) => {
-            el.onclick = () => {
-                currentIndex = i;
-                img.src = images[i];
+        document.querySelectorAll('.process-gallery img').forEach((el) => {
+            el.onclick = (e) => {
+                const gallery = e.target.closest('.process-gallery');
+                galleryImages = Array.from(gallery.querySelectorAll('img')).map(img => img.src);
+                currentIdx = galleryImages.indexOf(e.target.src);
+                lightboxImg.src = galleryImages[currentIdx];
                 lightbox.style.display = 'flex';
             };
         });
@@ -474,16 +467,15 @@
         document.querySelector('.drawing-close').onclick = () => lightbox.style.display = 'none';
         document.getElementById('drawing-prev').onclick = (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            img.src = images[currentIndex];
+            currentIdx = (currentIdx - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIdx];
         };
         document.getElementById('drawing-next').onclick = (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex + 1) % images.length;
-            img.src = images[currentIndex];
+            currentIdx = (currentIdx + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIdx];
         };
         lightbox.onclick = () => lightbox.style.display = 'none';
     </script>
 </body>
-
 </html>
