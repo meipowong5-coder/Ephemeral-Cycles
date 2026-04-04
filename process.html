@@ -15,7 +15,8 @@
             padding: 0;
         }
 
-        html, body {
+        html,
+        body {
             max-width: 100vw;
             overflow-x: hidden;
         }
@@ -60,7 +61,8 @@
             transition: all 0.3s ease;
         }
 
-        #timeline-dropdown:hover, #timeline-dropdown:focus {
+        #timeline-dropdown:hover,
+        #timeline-dropdown:focus {
             border-color: khaki;
             background-color: rgba(250, 235, 215, 0.25);
         }
@@ -109,16 +111,36 @@
             min-width: 300px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 10px;
             border: 1px solid rgba(250, 235, 215, 0.3);
             text-align: left;
         }
 
-        th { background: rgba(250, 235, 215, 0.1); color: antiquewhite; }
+        th {
+            background: rgba(250, 235, 215, 0.1);
+            color: antiquewhite;
+        }
 
-        .bold-text { font-weight: bold; color: antiquewhite; }
-        .quote-block { font-style: italic; border-left: 3px solid khaki; padding-left: 15px; margin: 15px 0; }
+        .bold-text {
+            font-weight: bold;
+            color: antiquewhite;
+        }
+
+        .quote-block {
+            font-style: italic;
+            border-left: 3px solid khaki;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        /* New Sub-section Styling for Advisor Feedback */
+        .sub-section {
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid antiquewhite;
+        }
     </style>
 </head>
 
@@ -139,7 +161,7 @@
         <div class="dropdown-container">
             <label for="timeline-dropdown" class="dropdown-label">Jump to Date:</label>
             <select id="timeline-dropdown">
-                </select>
+            </select>
         </div>
 
         <div class="process-list">
@@ -176,15 +198,28 @@
                     <div class="process-text">
                         <div class="process-points">
                             <div class="bold-text">1. Memento Mori</div>
-                            <div>Origin: Latin phrase “remember you must die”. Used in art to encourage humility and mindfulness.</div>
+                            <div>Origin: Latin phrase “remember you must die”. Used in art to encourage humility and
+                                mindfulness.</div>
                             <br>
                             <div class="bold-text">2. Perspectives on Time</div>
                             <div class="table-wrapper">
                                 <table>
-                                    <tr><th>Perspective</th><th>Core Idea</th></tr>
-                                    <tr><td>Physical</td><td>Measurable, mechanical (clocks, seconds)</td></tr>
-                                    <tr><td>Cosmological</td><td>Vast, cyclical (sun, seasons, stars)</td></tr>
-                                    <tr><td>Philosophical</td><td>Subjective, experiential (memory, presence)</td></tr>
+                                    <tr>
+                                        <th>Perspective</th>
+                                        <th>Core Idea</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Physical</td>
+                                        <td>Measurable, mechanical (clocks, seconds)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cosmological</td>
+                                        <td>Vast, cyclical (sun, seasons, stars)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Philosophical</td>
+                                        <td>Subjective, experiential (memory, presence)</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -197,9 +232,12 @@
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>As a secondary school student, I felt time accelerate. By the time I noticed, those years were gone.</div>
+                            <div>As a secondary school student, I felt time accelerate. By the time I noticed, those
+                                years were gone.</div>
                             <div>Big question: What does it mean to truly cherish time?</div>
-                            <div class="quote-block">Temporal conclusion: Perhaps the way to cherish time is to ignore it entirely — focus only on the task, immerse in the experience, let time disappear.</div>
+                            <div class="quote-block">Temporal conclusion: Perhaps the way to cherish time is to ignore
+                                it entirely — focus only on the task, immerse in the experience, let time disappear.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -227,10 +265,26 @@
                             <div class="bold-text">Animation Content Plan (Nature + Transience)</div>
                             <div class="table-wrapper">
                                 <table>
-                                    <tr><th>Ring</th><th>Frames</th><th>Theme</th></tr>
-                                    <tr><td>Outer (Hours)</td><td>24</td><td>Majestic decay (Oak acorn → tree)</td></tr>
-                                    <tr><td>Middle (Minutes)</td><td>6</td><td>Weekly/monthly (Strawberry → shrivel)</td></tr>
-                                    <tr><td>Inner (Seconds)</td><td>4</td><td>Daily (Daylily bloom)</td></tr>
+                                    <tr>
+                                        <th>Ring</th>
+                                        <th>Frames</th>
+                                        <th>Theme</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Outer (Hours)</td>
+                                        <td>24</td>
+                                        <td>Majestic decay (Oak acorn → tree)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Middle (Minutes)</td>
+                                        <td>6</td>
+                                        <td>Weekly/monthly (Strawberry → shrivel)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inner (Seconds)</td>
+                                        <td>4</td>
+                                        <td>Daily (Daylily bloom)</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -243,15 +297,32 @@
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Method: Split 518 frames into 129 groups (4 frames each) to create 129 interlaced strips.</div>
+                            <div>Method: Split 518 frames into 129 groups (4 frames each) to create 129 interlaced
+                                strips.</div>
                             <div>Arranged side-by-side around a donut-shaped ring in Processing.</div>
                             <div class="bold-text">Unified Animation Strategy:</div>
                             <div class="table-wrapper">
                                 <table>
-                                    <tr><th>Ring</th><th>Rotation Speed</th><th>Pace</th></tr>
-                                    <tr><td>Inner</td><td>1 turn / 60 sec</td><td>Fast</td></tr>
-                                    <tr><td>Middle</td><td>1 turn / 60 min</td><td>Moderate</td></tr>
-                                    <tr><td>Outer</td><td>1 turn / 12 hrs</td><td>Slow</td></tr>
+                                    <tr>
+                                        <th>Ring</th>
+                                        <th>Rotation Speed</th>
+                                        <th>Pace</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Inner</td>
+                                        <td>1 turn / 60 sec</td>
+                                        <td>Fast</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Middle</td>
+                                        <td>1 turn / 60 min</td>
+                                        <td>Moderate</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Outer</td>
+                                        <td>1 turn / 12 hrs</td>
+                                        <td>Slow</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -271,7 +342,8 @@
                             <div>Goal: Generate matching interlaced donut images that perfectly align.</div>
                         </div>
                         <div class="process-gallery">
-                            <img src="images/Mid-November 2025 – Technical Development_01.jpg" alt="Adobe Illustrator Grid">
+                            <img src="images/Mid-November 2025 – Technical Development_01.jpg"
+                                alt="Adobe Illustrator Grid">
                         </div>
                     </div>
                 </div>
@@ -283,7 +355,8 @@
                     <div class="process-text">
                         <div class="process-points">
                             <div>Abandoned the series for one unified interactive installation.</div>
-                            <div>Includes Physical (cylinder), Cosmological (light/shadow), and Philosophical (pulse sensor) aspects.</div>
+                            <div>Includes Physical (cylinder), Cosmological (light/shadow), and Philosophical (pulse
+                                sensor) aspects.</div>
                         </div>
                         <div class="process-gallery">
                             <img src="images/End of November 2025_01.jpg" alt="Single Installation Proposal">
@@ -297,8 +370,10 @@
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>The plant grows on one half, dies on the other, then flips and starts again forever.</div>
-                            <div>Solution for rotation: Cut a slit and thread the second strip through to allow independent rotation.</div>
+                            <div>The plant grows on one half, dies on the other, then flips and starts again forever.
+                            </div>
+                            <div>Solution for rotation: Cut a slit and thread the second strip through to allow
+                                independent rotation.</div>
                         </div>
                         <div class="process-gallery">
                             <img src="images/Mid-December 2025_01.jpg" alt="Möbius Strip Mechanism 1">
@@ -347,9 +422,9 @@
                             <div>Symbolizes that time requires human effort to continue flowing.</div>
                         </div>
                         <div class="process-gallery">
-                            <img src="images/End of January 2026_01.jpg" alt="Spring Test 1">
-                            <img src="images/End of January 2026_02.jpg" alt="Spring Test 2">
-                            <img src="images/End of January 2026_03.jpg" alt="Spring Test 3">
+                            <img src="images/End of January 2026_01.jpg">
+                            <img src="images/End of January 2026_02.jpg">
+                            <img src="images/End of January 2026_03.jpg">
                         </div>
                     </div>
                 </div>
@@ -360,26 +435,202 @@
                 <div class="process-body">
                     <div class="process-text">
                         <div class="process-points">
-                            <div>Removed projector and camera to focus on unity.</div>
-                            <div>1. Moving lights = Cosmological</div>
-                            <div>2. People walking = Philosophical</div>
-                            <div>3. Spring mechanism = Physical</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div>Decided to remove the projector and camera from the final setup. The projector was
+                                initially planned to project Processing-generated visual effects showing the shadow to
+                                the position of the audience as captured by the camera.</div>
+                            <div>The change was made to simplify the work, make it more focused on the main content, and
+                                create a stronger sense of unity. The three aspects of perceiving time are now clearly
+                                expressed as:</div>
+                            <div>1. Moving small metal lights = Cosmological perspective</div>
+                            <div>2. People walking to view the barrier-grid animation = Philosophical perspective</div>
+                            <div>3. Music box spring mechanism driven movement and music = Physical perspective</div>
+                            <div>The film element will be presented in four different forms:</div>
+                            <div>1. Unrolled film as a linear timeline</div>
+                            <div>2. Ends-connected film as cyclical time</div>
+                            <div>3. Möbius strip shaped film as unified and eternal time</div>
+                            <div>4. Film in pieces (one photo per piece) to represent fragments of time</div>
+                            <div>These film pieces will be hung or placed next to fixed spotlights on the wall. Viewers
+                                can choose a piece and project it onto a surface, either as a normal photo or as a
+                                barrier-grid animation. </div>
 
-            <div class="process-entry" id="entry-14">
-                <div class="process-title">Early March 2026 – Construction Begins</div>
-                <div class="process-body">
-                    <div class="process-text">
-                        <div class="process-points">
-                            <div>Confirmed film content (36 frames). Cut into 9-frame loop and 27-frame Möbius strip.</div>
-                            <div>Built the magnetic momentum mechanism and drilled the wooden base.</div>
+                            <div>I measured focal lengths, tested stacking, and adapted the box for real-world limited
+                                space.</div>
+                            <div class="bold-text">Summary of my handmade slide projector experiments</div>
+                            <div class="bold-text">Optimal Settings for Limited Distance (Target: 30–40cm Image)</div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <tr>
+                                        <th>Configuration</th>
+                                        <th>Film-to-lens (u)</th>
+                                        <th>Lens-to-wall (v)</th>
+                                        <th>Total box-to-wall distance</th>
+                                        <th>LExpected image width</th>
+                                        <th>Brightness</th>
+                                        <th>Clarity</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Single lens</td>
+                                        <td>22cm</td>
+                                        <td>31-39cm</td>
+                                        <td>40–50 cm</td>
+                                        <td>30–40 cm</td>
+                                        <td>Very good</td>
+                                        <td>Good (use 12.5 mm or 9 mm aperture for sharper edges)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stacked lenses (f=9.61 cm)</td>
+                                        <td>13–14 cm</td>
+                                        <td>30–37 cm</td>
+                                        <td>40–50 cm</td>
+                                        <td>30–40 cm</td>
+                                        <td>Medium</td>
+                                        <td>Good with small aperture</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="process-gallery">
+                                <img src="images/Mid-February 2026_01.jpg">
+                                <img src="images/Mid-February 2026_02.jpg">
+                                <img src="images/Mid-February 2026_03.jpg">
+                                <img src="images/Mid-February 2026_04.jpg">
+                                <img src="images/Mid-February 2026_05.jpg">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="process-entry" id="entry-14">
+            <div class="process-title">Early March 2026 – Construction Begins</div>
+            <div class="process-body">
+                <div class="process-text">
+                    <div class="process-points">
+                        <div>Confirmed film content (36 frames): 27 scenic images and 9 animation frames.</div>
+                        <div>Cut into a 9-frame loop for rotation and a 27-frame Möbius strip.</div>
+                        <div>Built the magnetic momentum mechanism.</div>
+                        <div>Drilled holes in the wooden base for stands, film loop, and spring
+                            mechanism.</div>
+                    </div>
+                    <div class="process-gallery">
+                        <img src="images/Early March 2026_01.jpg">
+                        <img src="images/Early March 2026_02.jpg">
+                        <img src="images/Early March 2026_03.jpg">
+                        <img src="images/Early March 2026_04.jpg">
+                        <img src="images/Early March 2026_06.jpg">
+                        <img src="images/Early March 2026_07.jpg">
+                        <img src="images/Early March 2026_08.jpg">
+                        <img src="images/Early March 2026_09.jpg">
+                        <img src="images/Early March 2026_10.jpg">
+                        <img src="images/Early March 2026_11.jpg">
+                        <img src="images/Early March 2026_12.jpg">
+                        <img src="images/Early March 2026_13.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-entry" id="entry-15">
+            <div class="process-title">End of March 2026 – Final Construction & Testing</div>
+            <div class="process-body">
+                <div class="process-text">
+                    <div class="process-points">
+                        <div>Finished building the wooden holder for the installation. The base consists of two 47 ×
+                            47 cm frames connected by four 2 × 4.5 × 100 cm wooden sticks, forming a stable,
+                            open-centered desk structure.</div>
+                        <div>Tested the projection distance by hanging the handmade projector and projecting a dusk
+                            scene film onto the floor beneath the desk. </div>
+                        <div>Also tested the music box spring mechanism by winding it to trigger the central film
+                            ring to spin.</div>
+                        <div>These tests confirmed that both the projection and the mechanical rotation function as
+                            intended.</div>
+                        <div class="process-gallery">
+                            <video controls>
+                                <source src="images/End of March 2026_01.mp4">
+                            </video>
+                            <video controls>
+                                <source src="images/End of March 2026_02.mp4">
+                            </video>
+                            <video controls>
+                                <source src="images/End of March 2026_03.mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-entry" id="entry-16">
+            <div class="process-title">Early April 2026 – Advisor Feedback & Refinements</div>
+            <div class="process-body">
+                <div class="process-text">
+                    <div class="process-points">
+                        <div>Met with advisor to present the latest version of the installation. She gave several
+                            clear suggestions:</div>
+
+                        <div><span class="bold-text">1. The magnetic pendulum does not look good in the current
+                                setup and should be removed completely.</span></div>
+                        <div class="process-gallery">
+                            <img src="images/Early April 2026_01.png">
+                            <img src="images/Early April 2026_02.png">
+                        </div>
+                        <div>Originally, the swinging magnetic lights were the main way to represent the
+                            cosmological perspective: the slow, natural, ever-changing movement of shadows like the
+                            sun and moon. </div>
+                        <div>Removing them means it lose a very poetic, gentle, and mechanical element that ties
+                            the work together nicely. If the pendulum looked messy or not refined enough, it should
+                            be removed. </div>
+                        <div>However, this creates a gap in the cosmological aspect. The three perspectives
+                            (Physical, Cosmological, Philosophical) were one of the strongest conceptual strengths
+                            of this project. </div>
+                        <div>Without the moving lights/shadows, the cosmological layer becomes weaker.Without the
+                            moving lights/shadows, the cosmological layer becomes weaker.</div>
+                        <div>But, there are some possible solutions including using directional light and wooden
+                            branches/trunks more strongly to create natural, moving shadows on the wall/floor, and
+                            let the rotating central film itself cast soft shadows that move slowly.</div>
+
+                        <div><span class="bold-text">2. Instead of relying only on the central film ring, place 9
+                                small TVs in a 3×3 grid near the wall. Each TV will play one complete 10-second
+                                animation loop from the 9 barrier-grid films (each film contains 3 frames). This
+                                allows viewers to see the full animation clearly.</span></div>
+                        <div>It solves the problem of the small 9-frame ring being hard to see. Viewers will clearly
+                            understand the full animation by watching the TVs. It makes the work much clearer and
+                            more accessible, which is good for an exhibition.</div>
+                        <div>However, adding 9 screens risks making the installation feel more “digital” and less
+                            poetic/mechanical. To keep them very small and simple, I would place them neatly on the
+                            wall as a secondary layer, not as the main focus. The central rotating film + music box
+                            should still be the heart of the work. </div>
+                        <div>Here is a brief overview of the main placement options I thought of: </div>
+                        <div>Option 1: TVs on one wall, installation in center (Clear
+                            visibility, but risks splitting experience).</div>
+                        <div>Option 2: TVs surrounding installation (Too many screens
+                            compete with poetic atmosphere).</div>
+                        <div>Option 3: 1 TV looping 9 animations (Simpler, but less
+                            immediate overview).</div>
+                        <div><span class="bold-text">3. The music box spring mechanism and the way the central film
+                                turns (sometimes fast, sometimes slow) is “raw but fine” and can be kept.</span>
+                        </div>
+                        <div><span class="bold-text">4. Replace the bamboo skewers with a 3D-printed base to hold
+                                the film and overlay more cleanly and professionally.</span></div>
+                        <div><span class="bold-text">5. Collect more objects that represent time (such as old movie
+                                tickets, train tickets, expired calendars, etc.) and think about how to present them
+                                meaningfully in the exhibition space.</span></div>
+                        <div><span class="bold-text">Final Decision:</span></div>
+                        <div>Keep main installation as the poetic focal point (Fiction/Emptiness area) and use TVs
+                            as secondary support (Real Lived area).</div>
+                        <div>Place 3×3 TV grid neatly on one wall, dimmed to act as background material.</div>
+                        <div>Use strong spotlights on central installation to keep it the brightest area.</div>
+                        <div>Replace bamboo skewers with a 3D-printed base for cleaner presentation.</div>
+                        <div>Collect physical fragments of time (movie tickets, old calendars) for display.</div>
+                        <div class="process-gallery">
+                            <img src="images/Early April 2026_03.png">
+                            <img src="images/Early April 2026_04.png">
+                            <img src="images/Early April 2026_05.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>
@@ -393,6 +644,11 @@
         <img id="drawing-img">
     </div>
 
+    <div id="loader">
+        <div class="hourglass"></div>
+        <p>It is almost done! Please wait~</p>
+    </div>
+
     <script>
         // Mapping MM/YYYY to the ID of the earliest entry for that month
         const monthMapping = [
@@ -403,7 +659,8 @@
             { label: "12/2025", entryId: "entry-9" },
             { label: "01/2026", entryId: "entry-10" },
             { label: "02/2026", entryId: "entry-13" },
-            { label: "03/2026", entryId: "entry-14" }
+            { label: "03/2026", entryId: "entry-14" },
+            { label: "04/2026", entryId: "entry-16" }
         ];
 
         // Back to top
@@ -413,6 +670,7 @@
 
         // Initialize Dropdown Navigation
         window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
             initDropdown();
         });
 
@@ -422,7 +680,7 @@
             // Populate the select element with options
             monthMapping.forEach((m, index) => {
                 const option = document.createElement('option');
-                option.value = index; 
+                option.value = index;
                 option.textContent = m.label;
                 dropdown.appendChild(option);
             });
@@ -432,7 +690,7 @@
                 const val = parseInt(e.target.value);
                 const targetId = monthMapping[val].entryId;
                 const entry = document.getElementById(targetId);
-                
+
                 if (entry) {
                     const offset = 80; // Offset to account for the sticky dropdown bar
                     const bodyRect = document.body.getBoundingClientRect().top;
@@ -478,4 +736,5 @@
         lightbox.onclick = () => lightbox.style.display = 'none';
     </script>
 </body>
+
 </html>
