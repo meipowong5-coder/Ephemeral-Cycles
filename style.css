@@ -47,6 +47,25 @@ nav ul {
     transform: scale(1.05);
 }
 
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* Year column narrower, Medium wider */
+    gap: 50px;
+    align-items: start;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr;   /* Year | Size | Medium (wider) */
+    gap: 50px;
+    margin: 30px 0;
+}
+
+.info-item {
+    min-width: 0;   /* Helps with text wrapping */
+}
+
 /* Main layout for home */
 #home {
     padding: 40px 5vw 50px;
@@ -55,14 +74,14 @@ nav ul {
 
 #home>h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 2.5em;
     color: antiquewhite;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .project-credits {
-    text-align: center;
+    text-align: left;
     margin-top: -20px;
     /* Pulls it closer to the H1 title */
     margin-bottom: 40px;
@@ -71,7 +90,8 @@ nav ul {
 
 .artist-name {
     font-size: 1.4rem;
-    letter-spacing: 2px;
+    text-align: center;
+    letter-spacing: 1px;
     margin-bottom: 5px;
     color: antiquewhite;
     /* Or your preferred highlight color */
@@ -80,6 +100,7 @@ nav ul {
 .advisor-name {
     font-size: 1rem;
     font-style: italic;
+    text-align: center;
     color: antiquewhite;
     /* A slightly softer grey to show hierarchy */
     margin-top: 0;
@@ -88,8 +109,8 @@ nav ul {
 .artist-statement {
     max-width: 800px;
     margin: 0 auto 40px;
-    text-align: center;
-    font-size: 1.2em;
+    text-align: left;
+    font-size: 1em;
     color: khaki;
 }
 
@@ -282,7 +303,8 @@ nav ul {
 
 #research>h2 {
     text-align: center;
-    font-size: 2em; /* Fixed the .em typo */
+    font-size: 2em;
+    /* Fixed the .em typo */
     color: antiquewhite;
     margin-bottom: 10px;
 }
@@ -319,23 +341,26 @@ nav ul {
 /* This container now keeps everything stacked vertically */
 .research-body {
     display: flex;
-    flex-direction: column; /* Stays vertical */
+    flex-direction: column;
+    /* Stays vertical */
     gap: 20px;
-    align-items: center; /* Centers the text block and gallery */
+    align-items: center;
+    /* Centers the text block and gallery */
 }
 
 /* REMOVED the flex-direction: row from this media query */
 @media (min-width: 900px) {
     .research-body {
         /* flex-direction: row; <--- This was the culprit! */
-        align-items: center; 
+        align-items: center;
         justify-content: center;
         gap: 25px;
     }
 }
 
 .research-text {
-    width: 100%; /* Ensures text takes up full width before gallery starts */
+    width: 100%;
+    /* Ensures text takes up full width before gallery starts */
     text-align: center;
 }
 
@@ -343,7 +368,7 @@ nav ul {
    but it will still be on top of the images */
 @media (min-width: 900px) {
     .research-text {
-        text-align: left; 
+        text-align: left;
     }
 }
 
