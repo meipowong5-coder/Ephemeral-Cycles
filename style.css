@@ -57,13 +57,15 @@ nav ul {
 
 .info-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.6fr;   /* Year | Size | Medium (wider) */
+    grid-template-columns: 1fr 1fr 1.6fr;
+    /* Year | Size | Medium (wider) */
     gap: 50px;
     margin: 30px 0;
 }
 
 .info-item {
-    min-width: 0;   /* Helps with text wrapping */
+    min-width: 0;
+    /* Helps with text wrapping */
 }
 
 /* Main layout for home */
@@ -633,4 +635,85 @@ nav ul {
 /* Hide the fade effect when expanded */
 .collapsible-wrapper.expanded::after {
     display: none;
+}
+
+.final-work-container {
+    padding-top: 80px;
+    /* Adjust this so the carousel starts below the Nav bar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final-carousel {
+    width: 100%;
+    max-width: 900px;
+    /* Wider to accommodate horizontal images */
+    margin: 0 auto 50px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #0a0a0a;
+    /* Dark backdrop for the "empty" space around images */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+
+    /* This sets a fixed height so the layout doesn't bounce */
+    height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    /* 'contain' ensures the whole image fits without cropping */
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Nav Buttons - Styled to be less intrusive */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.05);
+    color: antiquewhite;
+    border: none;
+    padding: 20px 10px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 4px 0 0 4px;
 }
